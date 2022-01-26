@@ -9,6 +9,7 @@ import "github.com/jimsnab/go-simpleutils"
 ## Index
 
 - [func CharGet(input string, position int) rune](<#func-charget>)
+- [func CopyFile(srcPath, destPath string) (int64, error)](<#func-copyfile>)
 - [func Escape(s string) string](<#func-escape>)
 - [func FileExists(path string) (bool, error)](<#func-fileexists>)
 - [func GenerateRandomBytes(count int) ([]byte, error)](<#func-generaterandombytes>)
@@ -35,6 +36,14 @@ func CharGet(input string, position int) rune
 
 Charget returns the rune at the logical index position
 
+## func [CopyFile](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L30>)
+
+```go
+func CopyFile(srcPath, destPath string) (int64, error)
+```
+
+CopyFile reads file content into memory and writes it to a new file
+
 ## func [Escape](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L109>)
 
 ```go
@@ -43,7 +52,7 @@ func Escape(s string) string
 
 Escape translates control characters to backslash escape sequence; e\.g\.\, '\\r' becomes \`\\r\`
 
-## func [FileExists](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L7>)
+## func [FileExists](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L11>)
 
 ```go
 func FileExists(path string) (bool, error)
@@ -67,7 +76,7 @@ func GenerateRandomString(count int) (string, error)
 
 GenerateRandomString returns a base\-64 encoding of a cryptographic \(true\) random number byte array\. The byte array length is specified by count\.
 
-## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L17>)
+## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L21>)
 
 ```go
 func IsDirectory(path string) (bool, error)
