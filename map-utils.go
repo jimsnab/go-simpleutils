@@ -5,6 +5,7 @@ import (
 	"sort"
 )
 
+//SortedKeys returns the key array for the map, sorted A-Z
 func SortedKeys(m interface{}) []string {
 	keys := reflect.ValueOf(m).MapKeys()
 
