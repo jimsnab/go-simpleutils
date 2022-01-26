@@ -81,10 +81,6 @@ func IsTokenCharNext(ch rune) bool {
 //IsTokenName returns true if s contains only letters, numbers or underscores,
 //and does not start with a number, and has at least one letter
 func IsTokenName(s string) bool {
-	if len(s) == 0 {
-		return false
-	}
-
 	first := true
 	hasLetter := false
 	for _, ch := range s {
@@ -101,6 +97,40 @@ func IsTokenName(s string) bool {
 			hasLetter = true
 		}
 	}
+	return hasLetter
+}
+
+//IsTokenNameWithMiddleChars returns true if s contains only letters, numbers or underscores,
+//or has allowed characters that are not first or last, does not start with a number, and has
+//at least one letter. A common middleChars string is "-".
+func IsTokenNameWithMiddleChars(s string, middleChars string) bool {
+	first := true
+	hasLetter := false
+	lastCh := rune(0)
+
+	for _, ch := range s {
+		lastCh = ch
+		if first {
+			if !IsTokenCharFirst(ch) {
+				return false
+			}
+			first = false
+		} else if !IsTokenCharNext(ch) {
+			if strings.ContainsAny(string(ch), middleChars) {
+				continue
+			}
+			return false
+		}
+
+		if (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')  {
+			hasLetter = true
+		}
+	}
+
+	if strings.ContainsAny(string(lastCh), middleChars) {
+		return false
+	}
+
 	return hasLetter
 }
 

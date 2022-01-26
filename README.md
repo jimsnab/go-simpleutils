@@ -18,6 +18,7 @@ import "github.com/jimsnab/go-simpleutils"
 - [func IsTokenCharFirst(ch rune) bool](<#func-istokencharfirst>)
 - [func IsTokenCharNext(ch rune) bool](<#func-istokencharnext>)
 - [func IsTokenName(s string) bool](<#func-istokenname>)
+- [func IsTokenNameWithMiddleChars(s string, middleChars string) bool](<#func-istokennamewithmiddlechars>)
 - [func PatternMatch(pattern string, testString string) bool](<#func-patternmatch>)
 - [func PrintableStr(input string) string](<#func-printablestr>)
 - [func SortedKeys(m interface{}) []string](<#func-sortedkeys>)
@@ -44,7 +45,7 @@ func CopyFile(srcPath, destPath string) (int64, error)
 
 CopyFile reads file content into memory and writes it to a new file
 
-## func [Escape](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L109>)
+## func [Escape](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L139>)
 
 ```go
 func Escape(s string) string
@@ -108,7 +109,15 @@ func IsTokenName(s string) bool
 
 IsTokenName returns true if s contains only letters\, numbers or underscores\, and does not start with a number\, and has at least one letter
 
-## func [PatternMatch](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L168>)
+## func [IsTokenNameWithMiddleChars](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L106>)
+
+```go
+func IsTokenNameWithMiddleChars(s string, middleChars string) bool
+```
+
+IsTokenNameWithMiddleChars returns true if s contains only letters\, numbers or underscores\, or has allowed characters that are not first or last\, does not start with a number\, and has at least one letter\. A common middleChars string is "\-"\.
+
+## func [PatternMatch](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L198>)
 
 ```go
 func PatternMatch(pattern string, testString string) bool
@@ -140,7 +149,7 @@ func Substr(input string, start int, length int) string
 
 Substr returns a string based on logical character start and length\, instead of bytes like a slice
 
-## func [Utf8len](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L183>)
+## func [Utf8len](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L213>)
 
 ```go
 func Utf8len(data []byte, offset int) int
@@ -148,7 +157,7 @@ func Utf8len(data []byte, offset int) int
 
 Utf8len returns the number of bytes in the logical UTF\-8 character\, 0 if the character is incomplete\, or \-1 if the character is invalid\,
 
-## func [WhichSuffix](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L131>)
+## func [WhichSuffix](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L161>)
 
 ```go
 func WhichSuffix(s string, suffixes ...string) *string
