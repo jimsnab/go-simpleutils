@@ -264,12 +264,61 @@ func StringArrayToString(strs []string, delimiter string) string {
 }
 
 
-// IndexOf is like strings.Index with a starting index
-func IndexOf(testString, substring string, startingIndex int) int {
+// IndexAt is like strings.Index with a starting index
+func IndexAt(testString, substring string, startingIndex int) int {
+	if startingIndex < 0 || startingIndex >= len(testString) {
+		return -1
+	}
 	return strings.Index(testString[startingIndex:], substring)
 }
 
-// IndexOfAny is like strings.Index with a starting index
-func IndexOfAny(testString, chars string, startingIndex int) int {
+// IndexAtAny is like strings.Index with a starting index
+func IndexAtAny(testString, chars string, startingIndex int) int {
+	if startingIndex < 0 || startingIndex >= len(testString) {
+		return -1
+	}
 	return strings.IndexAny(testString[startingIndex:], chars)
+}
+
+// RuneIndexAt is a version of IndexAt for rune arrays
+func RuneIndexAt(testString, substring []rune, startingIndex int) int {
+	testStringLen := len(testString)
+	if startingIndex < 0 || startingIndex >= testStringLen {
+		return -1
+	}
+
+	substringLen := len(substring)
+	end := testStringLen - substringLen
+
+	for pos := startingIndex; pos <= end; pos++ {
+		matched := true
+		for i := substringLen - 1; i >= 0; i-- {
+			if testString[pos+i] != substring[i] {
+				matched = false
+				break
+			}
+		}
+
+		if matched {
+			return pos
+		}
+	}
+	return -1
+}
+
+// RuneIndexAtAny is a version of IndexAtAny for rune arrays
+func RuneIndexAtAny(testString, chars []rune, startingIndex int) int {
+	testStringLen := len(testString)
+	if startingIndex < 0 || startingIndex >= testStringLen {
+		return -1
+	}
+
+	for pos := startingIndex; pos < testStringLen; pos++ {
+		for _,ch := range chars {
+			if testString[pos] == ch {
+				return pos
+			}
+		}
+	}
+	return -1
 }

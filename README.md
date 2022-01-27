@@ -14,8 +14,8 @@ import "github.com/jimsnab/go-simpleutils"
 - [func FileExists(path string) (bool, error)](<#func-fileexists>)
 - [func GenerateRandomBytes(count int) ([]byte, error)](<#func-generaterandombytes>)
 - [func GenerateRandomString(count int) (string, error)](<#func-generaterandomstring>)
-- [func IndexOf(testString, substring string, startingIndex int) int](<#func-indexof>)
-- [func IndexOfAny(testString, chars string, startingIndex int) int](<#func-indexofany>)
+- [func IndexAt(testString, substring string, startingIndex int) int](<#func-indexat>)
+- [func IndexAtAny(testString, chars string, startingIndex int) int](<#func-indexatany>)
 - [func IsDirectory(path string) (bool, error)](<#func-isdirectory>)
 - [func IsTokenCharFirst(ch rune) bool](<#func-istokencharfirst>)
 - [func IsTokenCharNext(ch rune) bool](<#func-istokencharnext>)
@@ -23,6 +23,8 @@ import "github.com/jimsnab/go-simpleutils"
 - [func IsTokenNameWithMiddleChars(s string, middleChars string) bool](<#func-istokennamewithmiddlechars>)
 - [func PatternMatch(pattern string, testString string) bool](<#func-patternmatch>)
 - [func PrintableStr(input string) string](<#func-printablestr>)
+- [func RuneIndexAt(testString, substring []rune, startingIndex int) int](<#func-runeindexat>)
+- [func RuneIndexAtAny(testString, chars []rune, startingIndex int) int](<#func-runeindexatany>)
 - [func SortedKeys(m interface{}) []string](<#func-sortedkeys>)
 - [func StringArrayToString(strs []string, delimiter string) string](<#func-stringarraytostring>)
 - [func Substr(input string, start int, length int) string](<#func-substr>)
@@ -80,21 +82,21 @@ func GenerateRandomString(count int) (string, error)
 
 GenerateRandomString returns a base\-64 encoding of a cryptographic \(true\) random number byte array\. The byte array length is specified by count\.
 
-## func [IndexOf](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L268>)
+## func [IndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L268>)
 
 ```go
-func IndexOf(testString, substring string, startingIndex int) int
+func IndexAt(testString, substring string, startingIndex int) int
 ```
 
-IndexOf is like strings\.Index with a starting index
+IndexAt is like strings\.Index with a starting index
 
-## func [IndexOfAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L273>)
+## func [IndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L276>)
 
 ```go
-func IndexOfAny(testString, chars string, startingIndex int) int
+func IndexAtAny(testString, chars string, startingIndex int) int
 ```
 
-IndexOfAny is like strings\.Index with a starting index
+IndexAtAny is like strings\.Index with a starting index
 
 ## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L21>)
 
@@ -151,6 +153,22 @@ func PrintableStr(input string) string
 ```
 
 PrintableStr converts non\-printable characters in input to a dot
+
+## func [RuneIndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L284>)
+
+```go
+func RuneIndexAt(testString, substring []rune, startingIndex int) int
+```
+
+RuneIndexAt is a version of IndexAt for rune arrays
+
+## func [RuneIndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L310>)
+
+```go
+func RuneIndexAtAny(testString, chars []rune, startingIndex int) int
+```
+
+RuneIndexAtAny is a version of IndexAtAny for rune arrays
 
 ## func [SortedKeys](<https://github.com/jimsnab/go-simpleutils/blob/main/map-utils.go#L9>)
 
