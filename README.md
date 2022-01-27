@@ -14,6 +14,8 @@ import "github.com/jimsnab/go-simpleutils"
 - [func FileExists(path string) (bool, error)](<#func-fileexists>)
 - [func GenerateRandomBytes(count int) ([]byte, error)](<#func-generaterandombytes>)
 - [func GenerateRandomString(count int) (string, error)](<#func-generaterandomstring>)
+- [func IndexOf(testString, substring string, startingIndex int) int](<#func-indexof>)
+- [func IndexOfAny(testString, chars string, startingIndex int) int](<#func-indexofany>)
 - [func IsDirectory(path string) (bool, error)](<#func-isdirectory>)
 - [func IsTokenCharFirst(ch rune) bool](<#func-istokencharfirst>)
 - [func IsTokenCharNext(ch rune) bool](<#func-istokencharnext>)
@@ -77,6 +79,22 @@ func GenerateRandomString(count int) (string, error)
 ```
 
 GenerateRandomString returns a base\-64 encoding of a cryptographic \(true\) random number byte array\. The byte array length is specified by count\.
+
+## func [IndexOf](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L268>)
+
+```go
+func IndexOf(testString, substring string, startingIndex int) int
+```
+
+IndexOf is like strings\.Index with a starting index
+
+## func [IndexOfAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L273>)
+
+```go
+func IndexOfAny(testString, chars string, startingIndex int) int
+```
+
+IndexOfAny is like strings\.Index with a starting index
 
 ## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L21>)
 

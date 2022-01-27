@@ -262,3 +262,14 @@ func StringArrayToString(strs []string, delimiter string) string {
 
 	return sb.String()
 }
+
+
+// IndexOf is like strings.Index with a starting index
+func IndexOf(testString, substring string, startingIndex int) int {
+	return strings.Index(testString[startingIndex:], substring)
+}
+
+// IndexOfAny is like strings.Index with a starting index
+func IndexOfAny(testString, chars string, startingIndex int) int {
+	return strings.IndexAny(testString[startingIndex:], chars)
+}
