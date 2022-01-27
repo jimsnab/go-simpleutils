@@ -247,3 +247,18 @@ func Utf8len(data []byte, offset int) int {
 
 	return len
 }
+
+//StringArrayToStrings converts an array of strings to a single
+//string, placing the delimiter string between each
+func StringArrayToString(strs []string, delimiter string) string {
+	var sb strings.Builder
+
+	for _,str := range strs {
+		if sb.Len() > 0 {
+			sb.WriteString(delimiter)
+		}
+		sb.WriteString(str)
+	}
+
+	return sb.String()
+}

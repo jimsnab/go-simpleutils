@@ -22,6 +22,7 @@ import "github.com/jimsnab/go-simpleutils"
 - [func PatternMatch(pattern string, testString string) bool](<#func-patternmatch>)
 - [func PrintableStr(input string) string](<#func-printablestr>)
 - [func SortedKeys(m interface{}) []string](<#func-sortedkeys>)
+- [func StringArrayToString(strs []string, delimiter string) string](<#func-stringarraytostring>)
 - [func Substr(input string, start int, length int) string](<#func-substr>)
 - [func Utf8len(data []byte, offset int) int](<#func-utf8len>)
 - [func WhichSuffix(s string, suffixes ...string) *string](<#func-whichsuffix>)
@@ -140,6 +141,14 @@ func SortedKeys(m interface{}) []string
 ```
 
 SortedKeys returns the key array for the map\, sorted A\-Z
+
+## func [StringArrayToString](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L253>)
+
+```go
+func StringArrayToString(strs []string, delimiter string) string
+```
+
+StringArrayToStrings converts an array of strings to a single string\, placing the delimiter string between each
 
 ## func [Substr](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L35>)
 
