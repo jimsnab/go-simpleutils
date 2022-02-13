@@ -18,4 +18,3 @@ func SortedKeys(m interface{}) []string {
 
 	return sorted
 }
-

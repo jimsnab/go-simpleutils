@@ -93,7 +93,7 @@ func IsTokenName(s string) bool {
 			return false
 		}
 
-		if (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')  {
+		if (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') {
 			hasLetter = true
 		}
 	}
@@ -122,7 +122,7 @@ func IsTokenNameWithMiddleChars(s string, middleChars string) bool {
 			return false
 		}
 
-		if (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')  {
+		if (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') {
 			hasLetter = true
 		}
 	}
@@ -213,34 +213,34 @@ func _getByte(data []byte, pos int) (byte, bool) {
 func Utf8len(data []byte, offset int) int {
 	b, valid := _getByte(data, offset)
 	if !valid {
-		return 0		// incomplete
+		return 0 // incomplete
 	}
 
 	if b < 0x80 {
-		return 1		// common 0-127 case
+		return 1 // common 0-127 case
 	}
 
 	// Multi-byte detected.
 	// The head byte indicates the length.
 	// 110xxxxx = 2 bytes, 1110xxxx = 3 bytes, 11110xxx = 4 bytes
 	var len int
-	if b & 0b11100000 == 0b11000000 {
+	if b&0b11100000 == 0b11000000 {
 		len = 2
-	} else if b & 0b11110000 == 0b11100000 {
+	} else if b&0b11110000 == 0b11100000 {
 		len = 3
-	} else if b & 0b11111000 == 0b11110000 {
+	} else if b&0b11111000 == 0b11110000 {
 		len = 4
 	} else {
-		return -1		// invalid
+		return -1 // invalid
 	}
 
 	// each trail byte must be in 10xxxxxx form
-	for i := 1 ; i < len ; i++ {
-		b, valid = _getByte(data, offset + i)
+	for i := 1; i < len; i++ {
+		b, valid = _getByte(data, offset+i)
 		if !valid {
-			return 0		// incomplete
+			return 0 // incomplete
 		}
-		if b & 0b11000000 != 0b10000000 {
+		if b&0b11000000 != 0b10000000 {
 			return -1
 		}
 	}
@@ -253,7 +253,7 @@ func Utf8len(data []byte, offset int) int {
 func StringArrayToString(strs []string, delimiter string) string {
 	var sb strings.Builder
 
-	for _,str := range strs {
+	for _, str := range strs {
 		if sb.Len() > 0 {
 			sb.WriteString(delimiter)
 		}
@@ -262,7 +262,6 @@ func StringArrayToString(strs []string, delimiter string) string {
 
 	return sb.String()
 }
-
 
 // IndexAt is like strings.Index with a starting index
 func IndexAt(testString, substring string, startingIndex int) int {
@@ -314,7 +313,7 @@ func RuneIndexAtAny(testString, chars []rune, startingIndex int) int {
 	}
 
 	for pos := startingIndex; pos < testStringLen; pos++ {
-		for _,ch := range chars {
+		for _, ch := range chars {
 			if testString[pos] == ch {
 				return pos
 			}

@@ -1,6 +1,7 @@
 package simpleutils
 
 import (
+	"errors"
 	"os"
 	"syscall"
 	"time"
@@ -21,7 +22,7 @@ func FileExists(path string) (bool, error) {
 func IsDirectory(path string) (bool, error) {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
-		if err == os.ErrNotExist {
+		if errors.Is(err, os.ErrNotExist) {
 			return false, nil
 		}
 		return false, err
@@ -43,7 +44,12 @@ func CopyFile(srcPath, destPath string) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	defer func() { dest.Close(); if failed { os.Remove(destPath) } }()
+	defer func() {
+		dest.Close()
+		if failed {
+			os.Remove(destPath)
+		}
+	}()
 
 	failed = true
 
