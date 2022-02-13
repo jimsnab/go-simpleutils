@@ -21,6 +21,9 @@ func FileExists(path string) (bool, error) {
 func IsDirectory(path string) (bool, error) {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
+		if err == os.ErrNotExist {
+			return false, nil
+		}
 		return false, err
 	}
 	return fileInfo.IsDir(), nil
