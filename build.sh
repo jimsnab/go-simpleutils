@@ -1,0 +1,1 @@
+gomarkdoc >README.md

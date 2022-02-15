@@ -10,6 +10,7 @@ import "github.com/jimsnab/go-simpleutils"
 
 - [func CharGet(input string, position int) rune](<#func-charget>)
 - [func CopyFile(srcPath, destPath string) (int64, error)](<#func-copyfile>)
+- [func DeepCopy(src interface{}) (dest interface{})](<#func-deepcopy>)
 - [func Escape(s string) string](<#func-escape>)
 - [func FileExists(path string) (bool, error)](<#func-fileexists>)
 - [func GenerateRandomBytes(count int) ([]byte, error)](<#func-generaterandombytes>)
@@ -42,13 +43,21 @@ func CharGet(input string, position int) rune
 
 Charget returns the rune at the logical index position
 
-## func [CopyFile](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L30>)
+## func [CopyFile](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L34>)
 
 ```go
 func CopyFile(srcPath, destPath string) (int64, error)
 ```
 
 CopyFile reads file content into memory and writes it to a new file
+
+## func [DeepCopy](<https://github.com/jimsnab/go-simpleutils/blob/main/obj-utils.go#L4>)
+
+```go
+func DeepCopy(src interface{}) (dest interface{})
+```
+
+DeepCopy generates a separate copy of a source object
 
 ## func [Escape](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L139>)
 
@@ -58,7 +67,7 @@ func Escape(s string) string
 
 Escape translates control characters to backslash escape sequence; e\.g\.\, '\\r' becomes \`\\r\`
 
-## func [FileExists](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L11>)
+## func [FileExists](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L12>)
 
 ```go
 func FileExists(path string) (bool, error)
@@ -82,7 +91,7 @@ func GenerateRandomString(count int) (string, error)
 
 GenerateRandomString returns a base\-64 encoding of a cryptographic \(true\) random number byte array\. The byte array length is specified by count\.
 
-## func [IndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L268>)
+## func [IndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L267>)
 
 ```go
 func IndexAt(testString, substring string, startingIndex int) int
@@ -90,7 +99,7 @@ func IndexAt(testString, substring string, startingIndex int) int
 
 IndexAt is like strings\.Index with a starting index
 
-## func [IndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L276>)
+## func [IndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L275>)
 
 ```go
 func IndexAtAny(testString, chars string, startingIndex int) int
@@ -98,7 +107,7 @@ func IndexAtAny(testString, chars string, startingIndex int) int
 
 IndexAtAny is like strings\.Index with a starting index
 
-## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L21>)
+## func [IsDirectory](<https://github.com/jimsnab/go-simpleutils/blob/main/file-utils.go#L22>)
 
 ```go
 func IsDirectory(path string) (bool, error)
@@ -154,7 +163,7 @@ func PrintableStr(input string) string
 
 PrintableStr converts non\-printable characters in input to a dot
 
-## func [RuneIndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L284>)
+## func [RuneIndexAt](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L283>)
 
 ```go
 func RuneIndexAt(testString, substring []rune, startingIndex int) int
@@ -162,7 +171,7 @@ func RuneIndexAt(testString, substring []rune, startingIndex int) int
 
 RuneIndexAt is a version of IndexAt for rune arrays
 
-## func [RuneIndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L310>)
+## func [RuneIndexAtAny](<https://github.com/jimsnab/go-simpleutils/blob/main/string-utils.go#L309>)
 
 ```go
 func RuneIndexAtAny(testString, chars []rune, startingIndex int) int
