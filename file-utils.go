@@ -3,8 +3,8 @@ package simpleutils
 import (
 	"errors"
 	"os"
-	"syscall"
-	"time"
+
+	"github.com/djherbis/atime"
 )
 
 //FileExists returns true if path corresponds to a file, and false
@@ -68,14 +68,16 @@ func CopyFile(srcPath, destPath string) (int64, error) {
 		return 0, err
 	}
 
-	si := fi.Sys().(*syscall.Stat_t)
-
 	err = os.Chmod(destPath, fi.Mode())
 	if err != nil {
 		return 0, err
 	}
 
-	atime := time.Unix(si.Atim.Sec, si.Atim.Nsec)
+	atime, err := atime.Stat(srcPath)
+	if err != nil {
+		return 0, err
+	}
+
 	err = os.Chtimes(destPath, atime, fi.ModTime())
 	if err != nil {
 		return 0, err
