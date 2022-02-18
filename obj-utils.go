@@ -5,7 +5,7 @@ func DeepCopy(src interface{}) (dest interface{}) {
 
 	switch val := src.(type) {
 	case map[string]interface{}:
-		m := make(map[string]interface{})
+		m := make(map[string]interface{}, len(val))
 		for k, v := range val {
 			m[k] = DeepCopy(v)
 		}
